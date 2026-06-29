@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exclusão de conta – Moneta</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(145deg, #f6f9fc 0%, #e9f0f8 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      max-width: 720px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.04);
+      padding: 48px 40px;
+      transition: all 0.2s ease;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 32px 20px;
+      }
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+      border-bottom: 2px solid #eef2f6;
+      padding-bottom: 24px;
+    }
+
+    .logo {
+      background: #003d99;
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 24px;
+      letter-spacing: -0.5px;
+      flex-shrink: 0;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0b1a33;
+      letter-spacing: -0.3px;
+    }
+
+    .header h1 span {
+      color: #003d99;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #eef3fc;
+      color: #003d99;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 100px;
+      margin-top: 4px;
+      letter-spacing: 0.3px;
+    }
+
+    .content {
+      color: #1e2a41;
+      line-height: 1.6;
+    }
+
+    .content p {
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: #2c3a58;
+    }
+
+    .steps {
+      background: #f8faff;
+      border-radius: 20px;
+      padding: 24px 28px;
+      margin: 24px 0 28px;
+      border-left: 4px solid #003d99;
+    }
+
+    .steps ol {
+      list-style: none;
+      counter-reset: step-counter;
+      padding: 0;
+    }
+
+    .steps li {
+      counter-increment: step-counter;
+      padding: 12px 0 12px 48px;
+      position: relative;
+      font-size: 16px;
+      border-bottom: 1px solid #e5ecf5;
+    }
+
+    .steps li:last-child {
+      border-bottom: none;
+    }
+
+    .steps li::before {
+      content: counter(step-counter);
+      background: #003d99;
+      color: white;
+      font-weight: 700;
+      font-size: 14px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      left: 0;
+      top: 10px;
+    }
+
+    .steps strong {
+      color: #003d99;
+    }
+
+    .highlight-box {
+      background: #f0f7fe;
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin: 24px 0;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .highlight-box .icon {
+      font-size: 24px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .highlight-box .text {
+      font-size: 15px;
+      color: #1e2a41;
+    }
+
+    .highlight-box .text strong {
+      color: #003d99;
+    }
+
+    .data-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 16px;
+      margin: 16px 0 20px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .data-list li {
+      position: relative;
+      padding-left: 24px;
+      font-size: 15px;
+      color: #1e2a41;
+    }
+
+    .data-list li::before {
+      content: "✓";
+      color: #003d99;
+      font-weight: 700;
+      position: absolute;
+      left: 0;
+    }
+
+    .footer {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid #e2e9f2;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer .contact {
+      font-size: 15px;
+      color: #2c3a58;
+    }
+
+    .footer .contact a {
+      color: #003d99;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer .contact a:hover {
+      text-decoration: underline;
+    }
+
+    .footer .copy {
+      font-size: 13px;
+      color: #6b7a93;
+    }
+
+    @media (max-width: 480px) {
+      .data-list {
+        grid-template-columns: 1fr;
+      }
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <!-- Cabeçalho -->
+    <div class="header">
+      <div class="logo">M</div>
+      <div>
+        <h1>Moneta <span>•</span> Exclusão de conta</h1>
+        <div class="badge">Instruções oficiais</div>
+      </div>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="content">
+      <p>
+        Esta página explica o processo para solicitar a exclusão permanente da sua conta e de todos os dados associados ao aplicativo <strong>Moneta</strong>, desenvolvido por <strong>Jairo Lopes</strong>.
+      </p>
+
+      <!-- Passos -->
+      <div class="steps">
+        <ol>
+          <li>Abra o aplicativo <strong>Moneta</strong> no seu dispositivo.</li>
+          <li>No menu lateral (toque no ícone ☰ no canto superior esquerdo), selecione <strong>Configurações</strong>.</li>
+          <li>Role a tela até o final e toque em <strong>Excluir conta</strong>.</li>
+          <li>Digite sua <strong>senha atual</strong> para confirmar sua identidade (reautenticação obrigatória).</li>
+          <li>Confirme a exclusão quando solicitado. A ação é <strong>irreversível</strong>.</li>
+        </ol>
+      </div>
+
+      <!-- Dados excluídos -->
+      <div class="highlight-box">
+        <div class="icon">🗑️</div>
+        <div class="text">
+          <strong>Quais dados são excluídos?</strong><br />
+          Ao solicitar a exclusão, todos os seus dados pessoais e financeiros serão removidos permanentemente dos nossos servidores, incluindo:
+          <ul class="data-list">
+            <li>Perfil (nome, e-mail, renda mensal)</li>
+            <li>Todas as transações registradas</li>
+            <li>Dívidas e lembretes</li>
+            <li>Recorrências cadastradas</li>
+            <li>Meta de gastos e categorias personalizadas</li>
+          </ul>
+          <span style="font-size: 14px; color: #3d4f6a;">Nenhum dado é mantido após a exclusão. Não há período de retenção adicional.</span>
+        </div>
+      </div>
+
+      <p style="font-size: 15px; color: #3d4f6a;">
+        <strong>⚠️ Atenção:</strong> A exclusão é definitiva e não pode ser desfeita. Certifique-se de que deseja remover sua conta antes de prosseguir.
+      </p>
+
+      <!-- Suporte -->
+      <div style="background: #fafcff; border-radius: 16px; padding: 16px 20px; margin-top: 24px; border: 1px solid #e2e9f2;">
+        <p style="margin-bottom: 4px; font-weight: 600; color: #0b1a33;">Precisa de ajuda?</p>
+        <p style="font-size: 15px; color: #2c3a58; margin-bottom: 0;">
+          Caso enfrente dificuldades durante o processo, entre em contato com nosso suporte pelo e-mail:
+          <a href="mailto:suporte@moneta.com" style="color: #003d99; font-weight: 600; text-decoration: none;">suporte@moneta.com</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Rodapé -->
+    <div class="footer">
+      <div class="contact">
+        <span style="color: #6b7a93;">Desenvolvedor:</span>
+        <strong style="color: #0b1a33;">Jairo Lopes</strong>
+        &nbsp;•&nbsp;
+        <a href="mailto:suporte@moneta.com">suporte@moneta.com</a>
+      </div>
+      <div class="copy">
+        Moneta &bull; v1.0
+      </div>
+    </div>
+  </div>
+</body>
+</html>
